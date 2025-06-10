@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>js validation form</title>
+	<link rel="stylesheet" href="iindex.css">
+</head>
+<body id="body">
+	<center>
+		<div id="form">
+			<form action="mani.php" method="get" onsubmit="return validateForm()">
+				<table style="border:1px dashed black" cellspacing="5px" cellpadding="5px">
+					<tr>
+						<td colspan="2"><center><header id="header">
+			                               <h2>validation form</h2>
+		                                </header></center>
+		                </td>
+		            </tr>
+					<tr>
+						<td><label>First Name:</label></td>
+						<td><input type="text" name="" id="first" oninput="firstname()" required>*<br>
+						<b><span id="firsterror" style="color:red; font-size:18px;"></span></b></td>
+					</tr>
+				    <tr>
+				    	<td><label>Middle Name:</label></td>
+				        <td><input type="text" name="" id="middle" oninput="middlename()" placeholder="optional" ><br>
+				        	<b><span id="middleerror" style="color:red; font-size:18px;"></span></b></td>
+				    </tr>
+				    <tr>
+				    	<td><label>Last Name:</label></td>
+				        <td><input type="text" name="" id="last" oninput="lastname()" required>*<br>
+				        	<b><span id="lasterror" style="color:red; font-size:18px;"></span></b></td>
+				    </tr>
+				    <tr>
+				    	<td><label>country:</label></td>
+				    	<td><select id="country" onchange="valphone()">
+				    		<option value="India">India</option>
+				    		<option value="USA">USA</option>
+				    	</select></td>
+				    </tr>
+				    <tr>
+				    	<td><label>Phone:</label></td>
+				    	<td><input type="text" name="" id="phone" oninput="valphone()" placeholder="enter phone" required>*<br>
+				    		<b><span id="phoneerror" style="color:red; font-size:18px;" ></span></b></td>
+				    </tr>
+				    <tr>
+				    	<td><label>Email:</label></td>
+				    	<td><input type="email" name="" id="email" oninput="validemail()" required>*<br>
+				    		<b><span id="emailerror" style="color:red;font-size:18px;"></span></b></td>
+				    </tr>
+				    <tr>
+				    	<td><label>Password:</label></td>
+				    	<td><input type="Password" name="" id="password" oninput="validpass()" required>*
+				    		<button type="button" onclick="togglePassword()">eye</button><br><br>
+				    		<b><span id="passerror" style="color:red;font-size:18px;"></span></b></td>
+				    </tr>
+				    <tr>
+				    	<td><label>DOB:</label></td>
+				    	<td><input type="Date" name="" id="dob" required></td>
+				    </tr>
+				    <tr>
+				    	<td><label>Hobbies:</label></td>
+				    	<td>playing cricket<input type="checkbox" class="hobby" value="cricket" name="">watching movies<input type="checkbox" class="hobby" value="movies" name="">cycling<input type="checkbox"  class="hobby" value="cycling" name="">reading books<input type="checkbox" class="hobby" value="reading" name=""><br>
+				    	<b><span id="hobbyerror" style="color:red; font-size:18px;"></span></b>
+				    	</td>
+				    </tr>
+				    <tr>
+				    	<td><label>upload photo:</label></td>
+				    	<td><input type="file" accept="image/*" id="file" onchange="validateFileSize()" required><br>
+				    		<b><span id="fileerror" style="color:red; font-size:18px;"></span></b></td>
+				    </tr>
+				    <tr>
+				    	<td><label>Address:</label></td>
+				    	<td><textarea rows="7" id="address" oninput="addresscheck()" required></textarea></td>
+				    </tr>
+				    <tr>
+				    	<td colspan="2" align="left"><input type="checkbox" name="" id="terms">I agree terms and conditions..<br>
+				    		<b><span id="termserror" style="color:red; font-size:18px;"></span></b></td>
+				    <tr>
+				    	<td colspan="2" align="center" >
+				    		<input type="button" name="" value="reset" onclick="resetform()">
+				    	</td>
+				    </tr>
+				    <tr>
+				    	<td colspan="2" align="center">
+				    		<input type="submit" name="" value="submit">
+				    	</td>
+				    </tr>
+                </table>
+		    </form>
+		</div>
+	</center>
+	<script src="iiindex.js"></script>
+	<script>
+  var images = [
+    "img1.jpg",
+    "img2.jpg",
+    "img3.jpg"
+  ];
+
+  var index = 0;
+
+  function slider() {
+    var formDiv = document.getElementById("form");
+    formDiv.style.backgroundImage = `url(${images[index]})`;
+    formDiv.style.backgroundSize = "cover";
+    formDiv.style.backgroundRepeat = "no-repeat";
+    formDiv.style.transition = "background-image 1s ease-in-out";
+    formDiv.style.height = "90%";
+
+    index = (index + 1) % images.length;
+  }
+  slider();
+    setInterval(slider, 3000);
+</script>
+
+</body>
+</html>
